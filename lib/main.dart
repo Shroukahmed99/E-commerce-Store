@@ -1,12 +1,22 @@
+import 'package:ecommerce_store/core/app/env.variables.dart';
 import 'package:ecommerce_store/ecommerce_store_app.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   
-  runApp(const EcommerceStoreApp());
+  await EnvVariables.instace.init(envType: EnvTypeEnum.dev);
+
+  await SystemChrome.setPreferredOrientations([
+  DeviceOrientation.portraitUp,
+  DeviceOrientation.portraitDown,
+]);
+
+runApp(const EcommerceStoreApp());
+
+
+ 
 }
-
-
