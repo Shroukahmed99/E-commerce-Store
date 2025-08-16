@@ -94,9 +94,9 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/icons/app_icon.jpg"
+  image_path: "assets/icons/app_icon.jpg"
   adaptive_icon_background: "#ffffff"
-  adaptive_icon_foreground: "assets/images/icons/play_store_512.png"
+  adaptive_icon_foreground: "assets/icons/app_icon.jpg"
 
 
 flutter:
