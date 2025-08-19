@@ -8,7 +8,7 @@ class TestOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 59, 134),
+      backgroundColor: context.color.mainColor,
       body: Center(
         child: TextButton(
           onPressed: () {
