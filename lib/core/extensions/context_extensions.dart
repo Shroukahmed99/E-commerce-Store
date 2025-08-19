@@ -1,4 +1,5 @@
 
+import 'package:ecommerce_store/core/language/app_localizations.dart';
 import 'package:ecommerce_store/core/style/themes/assets_extension.dart';
 import 'package:ecommerce_store/core/style/themes/color_extension.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +15,11 @@ extension ContextExtensions on BuildContext {
   // style
   TextStyle get textStyle => Theme.of(this).textTheme.displaySmall!;
 
-// //Language
-//   String translate(String langkey) {
-//     return AppLocalizations.of(this)!.translate(langkey).toString();
-//   }
+//Language
+  String translate(String langkey) {
+    return AppLocalizations.of(this)!.translate(langkey).toString();
+  }
+  
   //Navigation
 
   Future<dynamic> pushName(String routeName, {Object? arguments}) {

@@ -1,5 +1,6 @@
 import 'package:ecommerce_store/core/extensions/context_extensions.dart';
 import 'package:ecommerce_store/core/routes/app_routes.dart';
+import 'package:ecommerce_store/core/language/lang_keys.dart'; // ⬅️ مهم
 import 'package:flutter/material.dart';
 
 class TestOne extends StatelessWidget {
@@ -20,7 +21,7 @@ class TestOne extends StatelessWidget {
             foregroundColor: Colors.white,
             textStyle: const TextStyle(fontSize: 24),
           ),
-          child: const Text("This is Test One"),
+          child: Text(context.translate(LangKeys.welcome)),
         ),
       ),
     );
