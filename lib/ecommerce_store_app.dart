@@ -4,6 +4,7 @@ import 'package:ecommerce_store/core/common/screens/no_network_screen.dart';
 import 'package:ecommerce_store/core/routes/app_routes.dart';
 import 'package:ecommerce_store/core/style/images/fonts/font_family_helper.dart';
 import 'package:ecommerce_store/core/style/images/fonts/font_weight_helper.dart';
+import 'package:ecommerce_store/core/style/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,6 +26,7 @@ class EcommerceStoreApp extends StatelessWidget {
                 debugShowCheckedModeBanner: EnvVariables.instace.debugShow,
                 onGenerateRoute: AppRoutes.onGenerateRoute,
                 initialRoute: AppRoutes.testOne,
+                theme: themeDark(),
                 
               );
             } else {
