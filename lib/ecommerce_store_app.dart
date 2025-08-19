@@ -1,6 +1,7 @@
 import 'package:ecommerce_store/core/app/connectivity_controller.dart';
 import 'package:ecommerce_store/core/app/env.variables.dart';
 import 'package:ecommerce_store/core/common/screens/no_network_screen.dart';
+import 'package:ecommerce_store/core/language/app_localizations_setup.dart';
 import 'package:ecommerce_store/core/routes/app_routes.dart';
 import 'package:ecommerce_store/core/style/images/fonts/font_family_helper.dart';
 import 'package:ecommerce_store/core/style/images/fonts/font_weight_helper.dart';
@@ -27,6 +28,12 @@ class EcommerceStoreApp extends StatelessWidget {
                 onGenerateRoute: AppRoutes.onGenerateRoute,
                 initialRoute: AppRoutes.testOne,
                 theme: themeDark(),
+                  locale: const Locale('en'),
+                localizationsDelegates:
+                    AppLocalizationsSetup.localizationsDelegates,
+                supportedLocales: AppLocalizationsSetup.supportedLocales,
+                localeResolutionCallback:
+                    AppLocalizationsSetup.localeResolutionCallback,
                 
               );
             } else {
