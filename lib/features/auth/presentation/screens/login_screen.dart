@@ -11,7 +11,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CustomPaint(
-        size: Size(MediaQuery.of(context).size.width, 150.sp),
+        size: Size(MediaQuery.of(context).size.width, 75.sp),
 painter: AuthCustomPainter(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
