@@ -3,8 +3,6 @@ import 'package:ecommerce_store/core/app/env.variables.dart';
 import 'package:ecommerce_store/core/common/screens/no_network_screen.dart';
 import 'package:ecommerce_store/core/language/app_localizations_setup.dart';
 import 'package:ecommerce_store/core/routes/app_routes.dart';
-import 'package:ecommerce_store/core/style/images/fonts/font_family_helper.dart';
-import 'package:ecommerce_store/core/style/images/fonts/font_weight_helper.dart';
 import 'package:ecommerce_store/core/style/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,37 +12,48 @@ class EcommerceStoreApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      builder: (context, child) {
-        return ValueListenableBuilder(
-          valueListenable: ConnectivityController.instance.isConnected,
-          builder: (_, value, __) {
-            if (value) {
-              return MaterialApp(
-                title: "Ecommerce Store",
-                debugShowCheckedModeBanner: EnvVariables.instace.debugShow,
-                onGenerateRoute: AppRoutes.onGenerateRoute,
-                initialRoute: AppRoutes.testOne,
-                theme: themeDark(),
-                  locale: const Locale('en'),
-                localizationsDelegates:
-                    AppLocalizationsSetup.localizationsDelegates,
-                supportedLocales: AppLocalizationsSetup.supportedLocales,
-                localeResolutionCallback:
-                    AppLocalizationsSetup.localeResolutionCallback,
-                
-              );
-            } else {
-              return MaterialApp(
-                title: "No Network",
-                debugShowCheckedModeBanner: EnvVariables.instace.debugShow,
-                home: const NoNetworkScreen(),
-              );
-            }
-          },
-        );
+    return ValueListenableBuilder(
+      valueListenable: ConnectivityController.instance.isConnected,
+      builder: (_, value, __) {
+        if (value) {
+          return ScreenUtilInit(
+            designSize: const Size(360, 690),
+            minTextAdapt: true,
+            child: MaterialApp(
+              title: "Ecommerce Store",
+              debugShowCheckedModeBanner: EnvVariables.instace.debugShow,
+              onGenerateRoute: AppRoutes.onGenerateRoute,
+              initialRoute: AppRoutes.login,
+              theme: themeDark(),
+              locale: const Locale('en'),
+              localizationsDelegates: AppLocalizationsSetup.localizationsDelegates,
+              supportedLocales: AppLocalizationsSetup.supportedLocales,
+              localeResolutionCallback:
+                  AppLocalizationsSetup.localeResolutionCallback,
+              builder: (context, widget) {
+                return GestureDetector(
+                  onTap: () {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
+                  child: Scaffold(
+                    body: Builder(
+                      builder: (context) {
+                        ConnectivityController.instance.init();
+                        return widget!;
+                      },
+                    ),
+                  ),
+                );
+              },
+            ),
+          );
+        } else {
+          return MaterialApp(
+            title: "No Network",
+            debugShowCheckedModeBanner: EnvVariables.instace.debugShow,
+            home: const NoNetWorkScreen(),
+          );
+        }
       },
     );
   }
